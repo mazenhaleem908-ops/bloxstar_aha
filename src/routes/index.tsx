@@ -1,24 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+// The BloxStar storefront is a complete self-contained HTML application
+// (public/storefront.html). It is served verbatim at "/" so every page
+// container, script, style and product stays exactly as authored.
 export const Route = createFileRoute("/")({
-  component: Index,
+  server: {
+    handlers: {
+      GET: async ({ request }) => {
+        const res = await fetch(new URL("/storefront.html", request.url));
+        const html = await res.text();
+        return new Response(html, {
+          headers: { "content-type": "text/html; charset=utf-8" },
+        });
+      },
+    },
+  },
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}

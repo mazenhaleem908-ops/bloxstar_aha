@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicAbandonedCartRouteImport } from './routes/api/public/abandoned-cart'
+import { Route as ApiPublicOrdersRouteImport } from './routes/api/public/orders'
+import { Route as ApiPublicAuthSendCodeRouteImport } from './routes/api/public/auth.send-code'
+import { Route as ApiPublicAuthSessionRouteImport } from './routes/api/public/auth.session'
+import { Route as ApiPublicAuthVerifyCodeRouteImport } from './routes/api/public/auth.verify-code'
+import { Route as ApiPublicEmailSendRouteImport } from './routes/api/public/email.send'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicAbandonedCartRoute = ApiPublicAbandonedCartRouteImport.update({
+  id: '/api/public/abandoned-cart',
+  path: '/api/public/abandoned-cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicOrdersRoute = ApiPublicOrdersRouteImport.update({
+  id: '/api/public/orders',
+  path: '/api/public/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicAuthSendCodeRoute = ApiPublicAuthSendCodeRouteImport.update({
+  id: '/api/public/auth/send-code',
+  path: '/api/public/auth/send-code',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicAuthSessionRoute = ApiPublicAuthSessionRouteImport.update({
+  id: '/api/public/auth/session',
+  path: '/api/public/auth/session',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicAuthVerifyCodeRoute = ApiPublicAuthVerifyCodeRouteImport.update({
+  id: '/api/public/auth/verify-code',
+  path: '/api/public/auth/verify-code',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicEmailSendRoute = ApiPublicEmailSendRouteImport.update({
+  id: '/api/public/email/send',
+  path: '/api/public/email/send',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/public/abandoned-cart': typeof ApiPublicAbandonedCartRoute
+  '/api/public/orders': typeof ApiPublicOrdersRoute
+  '/api/public/auth/send-code': typeof ApiPublicAuthSendCodeRoute
+  '/api/public/auth/session': typeof ApiPublicAuthSessionRoute
+  '/api/public/auth/verify-code': typeof ApiPublicAuthVerifyCodeRoute
+  '/api/public/email/send': typeof ApiPublicEmailSendRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/public/abandoned-cart': typeof ApiPublicAbandonedCartRoute
+  '/api/public/orders': typeof ApiPublicOrdersRoute
+  '/api/public/auth/send-code': typeof ApiPublicAuthSendCodeRoute
+  '/api/public/auth/session': typeof ApiPublicAuthSessionRoute
+  '/api/public/auth/verify-code': typeof ApiPublicAuthVerifyCodeRoute
+  '/api/public/email/send': typeof ApiPublicEmailSendRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/public/abandoned-cart': typeof ApiPublicAbandonedCartRoute
+  '/api/public/orders': typeof ApiPublicOrdersRoute
+  '/api/public/auth/send-code': typeof ApiPublicAuthSendCodeRoute
+  '/api/public/auth/session': typeof ApiPublicAuthSessionRoute
+  '/api/public/auth/verify-code': typeof ApiPublicAuthVerifyCodeRoute
+  '/api/public/email/send': typeof ApiPublicEmailSendRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/api/public/abandoned-cart'
+    | '/api/public/orders'
+    | '/api/public/auth/send-code'
+    | '/api/public/auth/session'
+    | '/api/public/auth/verify-code'
+    | '/api/public/email/send'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/api/public/abandoned-cart'
+    | '/api/public/orders'
+    | '/api/public/auth/send-code'
+    | '/api/public/auth/session'
+    | '/api/public/auth/verify-code'
+    | '/api/public/email/send'
+  id:
+    | '__root__'
+    | '/'
+    | '/api/public/abandoned-cart'
+    | '/api/public/orders'
+    | '/api/public/auth/send-code'
+    | '/api/public/auth/session'
+    | '/api/public/auth/verify-code'
+    | '/api/public/email/send'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiPublicAbandonedCartRoute: typeof ApiPublicAbandonedCartRoute
+  ApiPublicOrdersRoute: typeof ApiPublicOrdersRoute
+  ApiPublicAuthSendCodeRoute: typeof ApiPublicAuthSendCodeRoute
+  ApiPublicAuthSessionRoute: typeof ApiPublicAuthSessionRoute
+  ApiPublicAuthVerifyCodeRoute: typeof ApiPublicAuthVerifyCodeRoute
+  ApiPublicEmailSendRoute: typeof ApiPublicEmailSendRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/abandoned-cart': {
+      id: '/api/public/abandoned-cart'
+      path: '/api/public/abandoned-cart'
+      fullPath: '/api/public/abandoned-cart'
+      preLoaderRoute: typeof ApiPublicAbandonedCartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/orders': {
+      id: '/api/public/orders'
+      path: '/api/public/orders'
+      fullPath: '/api/public/orders'
+      preLoaderRoute: typeof ApiPublicOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/auth/send-code': {
+      id: '/api/public/auth/send-code'
+      path: '/api/public/auth/send-code'
+      fullPath: '/api/public/auth/send-code'
+      preLoaderRoute: typeof ApiPublicAuthSendCodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/auth/session': {
+      id: '/api/public/auth/session'
+      path: '/api/public/auth/session'
+      fullPath: '/api/public/auth/session'
+      preLoaderRoute: typeof ApiPublicAuthSessionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/auth/verify-code': {
+      id: '/api/public/auth/verify-code'
+      path: '/api/public/auth/verify-code'
+      fullPath: '/api/public/auth/verify-code'
+      preLoaderRoute: typeof ApiPublicAuthVerifyCodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/email/send': {
+      id: '/api/public/email/send'
+      path: '/api/public/email/send'
+      fullPath: '/api/public/email/send'
+      preLoaderRoute: typeof ApiPublicEmailSendRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiPublicAbandonedCartRoute: ApiPublicAbandonedCartRoute,
+  ApiPublicOrdersRoute: ApiPublicOrdersRoute,
+  ApiPublicAuthSendCodeRoute: ApiPublicAuthSendCodeRoute,
+  ApiPublicAuthSessionRoute: ApiPublicAuthSessionRoute,
+  ApiPublicAuthVerifyCodeRoute: ApiPublicAuthVerifyCodeRoute,
+  ApiPublicEmailSendRoute: ApiPublicEmailSendRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
